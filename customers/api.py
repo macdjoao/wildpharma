@@ -18,18 +18,18 @@ def get_many(request):
 
 
 @router.get('/{customer_id}')
-def get_one(request):
+def get_one(request, customer_id):
     # TODO
     return 'Get One Customer'
 
 
 @router.patch('/{customer_id}')
-def patch(request):
+def patch(request, customer_id):
     # TODO
     return 'Patch Customer'
 
 
 @router.delete('/{customer_id}')
-def delete(request):
+def delete(request, customer_id):
     # TODO
     return 'Delete Customer'
