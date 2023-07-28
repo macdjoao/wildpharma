@@ -1,19 +1,19 @@
 # Seguir nomenclatura HTTP
-# Por questões de segurança, usarei ModelSchema e Schema em vez de create_schema ( https://django-ninja.rest-framework.com/guides/response/django-pydantic-create-schema/ )
+# Por questões de segurança, Schema em vez de create_schema ( https://django-ninja.rest-framework.com/guides/response/django-pydantic-create-schema/ )
 
 from ninja import Schema
 from datetime import datetime
 from typing import List, Optional
 
 
-class PostCustomerSchema(Schema):
+class PostCustomer(Schema):
     first_name: str
     last_name: str
     email: str
     phone: str
 
 
-class GetOneCustomerSchema(Schema):
+class GetOneCustomer(Schema):
     id: int
     first_name: str
     last_name: str
@@ -25,11 +25,11 @@ class GetOneCustomerSchema(Schema):
     deleted_at: datetime = None
 
 
-class GetManyCustomersSchema(Schema):
-    customers: List[GetOneCustomerSchema]
+class GetManyCustomers(Schema):
+    customers: List[GetOneCustomer]
 
 
-class PatchCustomerSchema(Schema):
+class PatchCustomer(Schema):
     first_name: Optional[str]
     last_name: Optional[str]
     email: Optional[str]
