@@ -1,23 +1,33 @@
 # Seguir nomenclatura CRUD
 
+from customers.models import Customer
+from django.shortcuts import get_object_or_404, get_list_or_404
+
+
 class CustomerService:
 
+    # TODO
     @staticmethod
-    def create():
+    def create(data: dict):
         return 'Create CustomerService'
 
     @staticmethod
-    def read_one():
-        return 'Read One CustomerService'
+    def read_one(id: int):
+        customer = get_object_or_404(Customer, id=id)
+        return customer
 
+    # TODO
     @staticmethod
     def read_many():
-        return 'Read Many CustomerService'
+        customers = get_list_or_404(Customer)
+        return customers
 
+    # TODO
     @staticmethod
-    def update():
+    def update(id: int, data: dict):
         return 'Update CustomerService'
 
+    # TODO
     @staticmethod
-    def delete():
+    def delete(id: int):
         return 'Delete CustomerService'
