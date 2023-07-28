@@ -2,32 +2,40 @@
 
 from customers.models import Customer
 from django.shortcuts import get_object_or_404, get_list_or_404
+from datetime import datetime
 
 
 class CustomerService:
 
-    # TODO
     @staticmethod
     def create(data: dict):
-        return 'Create CustomerService'
+        customer = Customer.objects.create(**data.dict())
+        return get_object_or_404(Customer, id=customer.id)
 
     @staticmethod
     def read_one(id: int):
-        customer = get_object_or_404(Customer, id=id)
+        customer = get_object_or_404(Customer, id=id, active=True)
         return customer
 
-    # TODO
     @staticmethod
     def read_many():
-        customers = get_list_or_404(Customer)
+        customers = get_list_or_404(Customer, active=True)
         return customers
 
     # TODO
     @staticmethod
     def update(id: int, data: dict):
-        return 'Update CustomerService'
+        customer = get_object_or_404(Customer, id=id)
+        for attr, value in data.dict().items():
+            setattr(customer, attr, value)
+        customer.save()
+        return get_object_or_404(Customer, id=id)
 
-    # TODO
+    # Delete lógico
     @staticmethod
     def delete(id: int):
-        return 'Delete CustomerService'
+        customer = get_object_or_404(Customer, id=id)
+        customer.active = False
+        customer.deleted_at = datetime.now()
+        customer.save()
+        return get_object_or_404(Customer, id=id)
