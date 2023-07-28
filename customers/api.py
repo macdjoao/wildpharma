@@ -1,19 +1,19 @@
 # Seguir nomenclatura HTTP
 
 from ninja import Router
-from customers.schemas import PostCustomer, GetOneCustomer, GetManyCustomers, PatchCustomer
+from customers.schemas import PostCustomer, GetOneCustomer, PatchCustomer
 from customers.services import CustomerService
+from typing import List
 
 router = Router(tags=['Customers'])
 
 
 @router.post('/', response=GetOneCustomer)
 def post_customer(request, payload: PostCustomer):
-    # TODO
-    return 'Post Customer'
+    return CustomerService.create(data=payload)
 
 
-@router.get('/', response=GetManyCustomers)
+@router.get('/', response=List[GetOneCustomer])
 def get_many_customers(request):
     return CustomerService.read_many()
 
@@ -25,11 +25,9 @@ def get_one_customer(request, customer_id: int):
 
 @router.patch('/{customer_id}', response=GetOneCustomer)
 def patch_customer(request, customer_id: int, payload: PatchCustomer):
-    # TODO
-    return 'Patch Customer'
+    return CustomerService.update(id=customer_id, data=payload)
 
 
 @router.delete('/{customer_id}', response=GetOneCustomer)
 def delete_customer(request, customer_id: int):
-    # TODO
-    return 'Delete Customer'
+    return CustomerService.delete(id=customer_id)
