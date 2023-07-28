@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "wildpharma"
+version = "0.1.0"
+description = "Um projeto para estudar e praticar Django-Ninja"
+authors = ["João Victor Inocêncio Macedo de Aguiar <macdjoao@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
