@@ -1,3 +1,5 @@
+# Seguir nomenclatura HTTP
+
 from ninja import Router
 
 router = Router(tags=['Customers'])

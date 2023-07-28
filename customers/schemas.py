@@ -1,3 +1,5 @@
+# Seguir nomenclatura HTTP
+
 class PostCustomer:
     pass
 
