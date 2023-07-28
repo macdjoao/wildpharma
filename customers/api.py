@@ -1,36 +1,35 @@
 # Seguir nomenclatura HTTP
 
 from ninja import Router
-from customers.schemas import PostCustomerSchema, GetOneCustomerSchema, GetManyCustomersSchema, PatchCustomerSchema
+from customers.schemas import PostCustomer, GetOneCustomer, GetManyCustomers, PatchCustomer
+from customers.services import CustomerService
 
 router = Router(tags=['Customers'])
 
 
-@router.post('/', response=GetOneCustomerSchema)
-def post(request, body: PostCustomerSchema):
+@router.post('/', response=GetOneCustomer)
+def post_customer(request, payload: PostCustomer):
     # TODO
     return 'Post Customer'
 
 
-@router.get('/', response=GetManyCustomersSchema)
-def get_many(request):
-    # TODO
-    return 'Get Many Customers'
+@router.get('/', response=GetManyCustomers)
+def get_many_customers(request):
+    return CustomerService.read_many()
 
 
-@router.get('/{customer_id}', response=GetOneCustomerSchema)
-def get_one(request, customer_id):
-    # TODO
-    return 'Get One Customer'
+@router.get('/{customer_id}', response=GetOneCustomer)
+def get_one_customer(request, customer_id: int):
+    return CustomerService.read_one(id=customer_id)
 
 
-@router.patch('/{customer_id}', response=GetOneCustomerSchema)
-def patch(request, customer_id, body: PatchCustomerSchema):
+@router.patch('/{customer_id}', response=GetOneCustomer)
+def patch_customer(request, customer_id: int, payload: PatchCustomer):
     # TODO
     return 'Patch Customer'
 
 
-@router.delete('/{customer_id}', response=GetOneCustomerSchema)
-def delete(request, customer_id):
+@router.delete('/{customer_id}', response=GetOneCustomer)
+def delete_customer(request, customer_id: int):
     # TODO
     return 'Delete Customer'
