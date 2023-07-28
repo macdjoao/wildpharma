@@ -3,7 +3,7 @@
 
 from ninja import Schema
 from datetime import datetime
-from typing import List, Optional
+from typing import Optional
 
 
 class PostCustomer(Schema):
@@ -23,10 +23,6 @@ class GetOneCustomer(Schema):
     created_at: datetime
     updated_at: datetime = None
     deleted_at: datetime = None
-
-
-class GetManyCustomers(Schema):
-    customers: List[GetOneCustomer]
 
 
 class PatchCustomer(Schema):
