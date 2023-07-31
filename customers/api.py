@@ -13,14 +13,14 @@ def post_customer(request, payload: PostCustomerSchema):
     return CustomerService.create(data=payload)
 
 
-@router.get('/', response=List[GetOneCustomerSchema])
-def get_many_customers(request):
-    return CustomerService.read_many()
+@router.get('/{active}', response=List[GetOneCustomerSchema])
+def get_many_customers(request, active: bool):
+    return CustomerService.read_many(active=active)
 
 
-@router.get('/{customer_id}', response=GetOneCustomerSchema)
-def get_one_customer(request, customer_id: int):
-    return CustomerService.read_one(id=customer_id)
+@router.get('/{customer_id}/{active}', response=GetOneCustomerSchema)
+def get_one_customer(request, customer_id: int, active: bool):
+    return CustomerService.read_one(id=customer_id, active=active)
 
 
 @router.patch('/{customer_id}', response=GetOneCustomerSchema)

@@ -13,13 +13,13 @@ class CustomerService:
         return get_object_or_404(Customer, id=customer.id)
 
     @staticmethod
-    def read_one(id: int):
-        customer = get_object_or_404(Customer, id=id, active=True)
+    def read_one(id: int, active: bool):
+        customer = get_object_or_404(Customer, id=id, active=active)
         return customer
 
     @staticmethod
-    def read_many():
-        customers = get_list_or_404(Customer, active=True)
+    def read_many(active: bool):
+        customers = get_list_or_404(Customer, active=active)
         return customers
 
     # TODO
