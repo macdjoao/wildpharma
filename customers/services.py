@@ -24,9 +24,10 @@ class CustomerService:
 
     @staticmethod
     def update(id: int, data: dict):
-        # TODO
         customer = get_object_or_404(Customer, id=id)
         for attr, value in data.dict().items():
+            if value is None:
+                continue
             setattr(customer, attr, value)
         customer.save()
         return get_object_or_404(Customer, id=id)
