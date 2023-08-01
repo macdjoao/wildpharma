@@ -5,7 +5,7 @@ from ninja import ModelSchema
 from customers.models import Customer
 
 
-class CreateCustomerSchema(ModelSchema):
+class PostCustomerSchema(ModelSchema):
     class Config:
         model = Customer
         model_fields = ['first_name', 'last_name', 'email', 'phone']
@@ -18,7 +18,7 @@ class GetCustomerSchema(ModelSchema):
                         'email', 'phone', 'active', 'created_at', 'updated_at', 'deleted_at']
 
 
-class UpdateCustomerSchema(ModelSchema):
+class PatchCustomerSchema(ModelSchema):
     class Config:
         model = Customer
         model_exclude = ['id', 'active',
