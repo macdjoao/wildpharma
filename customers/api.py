@@ -25,9 +25,11 @@ def get_one_customer(request, customer_id: int, active: bool):
 
 @router.patch('/{customer_id}', summary='Update customer', response=GetCustomerSchema)
 def patch_customer(request, customer_id: int, payload: UpdateCustomerSchema):
+    # TODO
     return CustomerService.update(id=customer_id, data=payload)
 
 
 @router.delete('/{customer_id}', summary='Delete customer', response=GetCustomerSchema)
 def delete_customer(request, customer_id: int):
+    # TODO
     return CustomerService.delete(id=customer_id)

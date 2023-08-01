@@ -22,9 +22,9 @@ class CustomerService:
         customers = get_list_or_404(Customer, active=active)
         return customers
 
-    # TODO
     @staticmethod
     def update(id: int, data: dict):
+        # TODO
         customer = get_object_or_404(Customer, id=id)
         for attr, value in data.dict().items():
             setattr(customer, attr, value)
@@ -34,6 +34,7 @@ class CustomerService:
     # Delete lógico
     @staticmethod
     def delete(id: int):
+        # TODO
         customer = get_object_or_404(Customer, id=id)
         customer.active = False
         customer.deleted_at = datetime.now()
