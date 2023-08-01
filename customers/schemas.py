@@ -5,20 +5,20 @@ from ninja import ModelSchema
 from customers.models import Customer
 
 
-class PostCustomerSchema(ModelSchema):
+class CreateCustomerSchema(ModelSchema):
     class Config:
         model = Customer
         model_fields = ['first_name', 'last_name', 'email', 'phone']
 
 
-class GetOneCustomerSchema(ModelSchema):
+class GetCustomerSchema(ModelSchema):
     class Config:
         model = Customer
         model_fields = ['id', 'first_name', 'last_name',
                         'email', 'phone', 'active', 'created_at', 'updated_at', 'deleted_at']
 
 
-class PatchCustomerSchema(ModelSchema):
+class UpdateCustomerSchema(ModelSchema):
     class Config:
         model = Customer
         model_exclude = ['id', 'active',
