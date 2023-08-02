@@ -35,7 +35,6 @@ class CustomerService:
     # Delete lógico
     @staticmethod
     def delete(id: int):
-        # TODO
         customer = get_object_or_404(Customer, id=id)
         customer.active = False
         customer.deleted_at = datetime.now()
