@@ -4,6 +4,7 @@ from ninja import Router
 from customers.schemas import PostCustomerSchema, GetCustomerSchema, PatchCustomerSchema
 from customers.services import CustomerService
 from typing import List
+from ninja.pagination import paginate, LimitOffsetPagination
 
 router = Router(tags=['Customers'])
 
@@ -19,6 +20,7 @@ def get_one_customer(request, customer_id: int, active: bool):
 
 
 @router.get('/{active}', summary='Get all customers', response=List[GetCustomerSchema])
+@paginate(LimitOffsetPagination)
 def get_many_customers(request, active: bool):
     return CustomerService.read_many(active=active)
 
